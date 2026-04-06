@@ -14,7 +14,7 @@ ConnectionConfig:
   BufferSize: 64 # The internal cache size of each connection, kB
 Nodes:
   -
-    PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, V2board, PMpanel, Proxypanel
+    PanelType: "V2board" # Panel type: SSpanel, NewV2board, V2board, PMpanel, Proxypanel
     ApiConfig:
       ApiHost: "https://tx.102387.xyz"
       ApiKey: "aB7kD4sH2jL8mN5pQ1rS6tV9wX0yZ3aB7cD2eF5gH1iJ8kL6mN3pQ0rS9"
