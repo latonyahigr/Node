@@ -45,7 +45,7 @@
                     "EnvName": "env1"
                 }
             }
-        }, {
+        },{
             "Core": "sing",
             "ApiHost": "https://2gctx.201345.xyz",
             "ApiKey": "2Md8Xp4Qk7Tv1Zr6Ny5Hc9Ls3Wa0BjUf",
@@ -68,7 +68,7 @@
                     "EnvName": "env1"
                 }
             }
-        }, {
+        },{
             "Core": "sing",
             "ApiHost": "https://3xltx.319043.xyz",
             "ApiKey": "3Rt6Nk2Vz9Qm4Xp7Hy1Lc8Wd5Ts0BjUa",
@@ -91,7 +91,7 @@
                     "EnvName": "env1"
                 }
             }
-        }, {
+        },{
             "Core": "sing",
             "ApiHost": "https://4fltx.423617.xyz",
             "ApiKey": "4Vp9Qk3Nz7Tm2Rx6Hy8Lc1Wd5Js0BaUf",
