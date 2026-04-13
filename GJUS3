@@ -1,0 +1,126 @@
+{
+    "Log": {
+        "Level": "error",
+        "Output": ""
+    },
+    "Cores": [
+    {
+        "Type": "hysteria2",
+        "Log": {
+            "Level": "error"
+        }
+    },{
+        "Type": "sing",
+        "Log": {
+            "Level": "error",
+            "Timestamp": true
+        },
+        "NTP": {
+            "Enable": false,
+            "Server": "time.apple.com",
+            "ServerPort": 0
+        },
+        "OriginalPath": "/etc/V2bX/sing_origin.json"
+    }],
+    "Nodes": [{
+            "Core": "sing",
+            "ApiHost": "https://1jktx.102387.xyz",
+            "ApiKey": "1Kf7Qm9Tz2Rp8Vx4Nc6Hy3Ld5Ws0BjUa",
+            "NodeID": 53,
+            "NodeType": "hysteria2",
+            "Timeout": 30,
+            "ListenIP": "::",
+            "SendIP": "0.0.0.0",
+            "DeviceOnlineMinTraffic": 200,
+            "MinReportTraffic": 0,
+            "TCPFastOpen": false,
+            "SniffEnabled": true,
+            "CertConfig": {
+                "CertMode": "self",
+                "RejectUnknownSni": false,
+                "CertDomain": "a3z4x5c6.811235.xyz",
+                "CertFile": "/etc/V2bX/fullchain.cer",
+                "KeyFile": "/etc/V2bX/cert.key",
+                "Email": "v2bx@github.com",
+                "Provider": "cloudflare",
+                "DNSEnv": {
+                    "EnvName": "env1"
+                }
+            }
+        },{
+            "Core": "sing",
+            "ApiHost": "https://2gctx.201345.xyz",
+            "ApiKey": "2Md8Xp4Qk7Tv1Zr6Ny5Hc9Ls3Wa0BjUf",
+            "NodeID": 46,
+            "NodeType": "hysteria2",
+            "Timeout": 30,
+            "ListenIP": "::",
+            "SendIP": "0.0.0.0",
+            "DeviceOnlineMinTraffic": 200,
+            "MinReportTraffic": 0,
+            "TCPFastOpen": false,
+            "SniffEnabled": true,
+            "CertConfig": {
+                "CertMode": "self",
+                "RejectUnknownSni": false,
+                "CertDomain": "v7b8n9m1.811235.xyz",
+                "CertFile": "/etc/V2bX/fullchain.cer",
+                "KeyFile": "/etc/V2bX/cert.key",
+                "Email": "v2bx@github.com",
+                "Provider": "cloudflare",
+                "DNSEnv": {
+                    "EnvName": "env1"
+                }
+            }
+        },{
+            "Core": "sing",
+            "ApiHost": "https://3xltx.319043.xyz",
+            "ApiKey": "3Rt6Nk2Vz9Qm4Xp7Hy1Lc8Wd5Ts0BjUa",
+            "NodeID": 6,
+            "NodeType": "hysteria2",
+            "Timeout": 30,
+            "ListenIP": "::",
+            "SendIP": "0.0.0.0",
+            "DeviceOnlineMinTraffic": 200,
+            "MinReportTraffic": 0,
+            "TCPFastOpen": false,
+            "SniffEnabled": true,
+            "CertConfig": {
+                "CertMode": "self",
+                "RejectUnknownSni": false,
+                "CertDomain": "q2w3e4r5.811235.xyz",
+                "CertFile": "/etc/V2bX/fullchain.cer",
+                "KeyFile": "/etc/V2bX/cert.key",
+                "Email": "v2bx@github.com",
+                "Provider": "cloudflare",
+                "DNSEnv": {
+                    "EnvName": "env1"
+                }
+            }
+        },{
+            "Core": "sing",
+            "ApiHost": "https://4fltx.423617.xyz",
+            "ApiKey": "4Vp9Qk3Nz7Tm2Rx6Hy8Lc1Wd5Js0BaUf",
+            "NodeID": 17,
+            "NodeType": "hysteria2",
+            "Timeout": 30,
+            "ListenIP": "::",
+            "SendIP": "0.0.0.0",
+            "DeviceOnlineMinTraffic": 200,
+            "MinReportTraffic": 0,
+            "TCPFastOpen": false,
+            "SniffEnabled": true,
+            "CertConfig": {
+                "CertMode": "self",
+                "RejectUnknownSni": false,
+                "CertDomain": "t6y7u8i9.811235.xyz",
+                "CertFile": "/etc/V2bX/fullchain.cer",
+                "KeyFile": "/etc/V2bX/cert.key",
+                "Email": "v2bx@github.com",
+                "Provider": "cloudflare",
+                "DNSEnv": {
+                    "EnvName": "env1"
+                }
+            }
+        }]
+}
