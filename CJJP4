@@ -9,20 +9,34 @@
         "Log": {
             "Level": "error"
         }
+    },{
+        "Type": "sing",
+        "Log": {
+            "Level": "error",
+            "Timestamp": true
+        },
+        "NTP": {
+            "Enable": false,
+            "Server": "time.apple.com",
+            "ServerPort": 0
+        },
+        "OriginalPath": "/etc/V2bX/sing_origin.json"
     }],
     "Nodes": [{
-            "Core": "hysteria2",
+            "Core": "sing",
             "ApiHost": "https://1jktx.102387.xyz",
             "ApiKey": "1Kf7Qm9Tz2Rp8Vx4Nc6Hy3Ld5Ws0BjUa",
             "NodeID": 50,
             "NodeType": "hysteria2",
-            "Hysteria2ConfigPath": "/etc/V2bX/hy2config.yaml",
             "Timeout": 30,
-            "ListenIP": "",
+            "ListenIP": "::",
             "SendIP": "0.0.0.0",
             "DeviceOnlineMinTraffic": 200,
+            "MinReportTraffic": 0,
+            "TCPFastOpen": false,
+            "SniffEnabled": true,
             "CertConfig": {
-                "CertMode": "http",
+                "CertMode": "self",
                 "RejectUnknownSni": false,
                 "CertDomain": "q1w2e3r4.855612.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
@@ -33,19 +47,21 @@
                     "EnvName": "env1"
                 }
             }
-        }, {
-            "Core": "hysteria2",
+        },{
+            "Core": "sing",
             "ApiHost": "https://2gctx.201345.xyz",
             "ApiKey": "2Md8Xp4Qk7Tv1Zr6Ny5Hc9Ls3Wa0BjUf",
             "NodeID": 43,
             "NodeType": "hysteria2",
-            "Hysteria2ConfigPath": "/etc/V2bX/hy2config.yaml",
             "Timeout": 30,
-            "ListenIP": "",
+            "ListenIP": "::",
             "SendIP": "0.0.0.0",
             "DeviceOnlineMinTraffic": 200,
+            "MinReportTraffic": 0,
+            "TCPFastOpen": false,
+            "SniffEnabled": true,
             "CertConfig": {
-                "CertMode": "http",
+                "CertMode": "self",
                 "RejectUnknownSni": false,
                 "CertDomain": "t5y6u7i8.855612.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
@@ -56,19 +72,21 @@
                     "EnvName": "env1"
                 }
             }
-        }, {
-            "Core": "hysteria2",
+        },{
+            "Core": "sing",
             "ApiHost": "https://3xltx.319043.xyz",
             "ApiKey": "3Rt6Nk2Vz9Qm4Xp7Hy1Lc8Wd5Ts0BjUa",
             "NodeID": 40,
             "NodeType": "hysteria2",
-            "Hysteria2ConfigPath": "/etc/V2bX/hy2config.yaml",
             "Timeout": 30,
-            "ListenIP": "",
+            "ListenIP": "::",
             "SendIP": "0.0.0.0",
             "DeviceOnlineMinTraffic": 200,
+            "MinReportTraffic": 0,
+            "TCPFastOpen": false,
+            "SniffEnabled": true,
             "CertConfig": {
-                "CertMode": "http",
+                "CertMode": "self",
                 "RejectUnknownSni": false,
                 "CertDomain": "o9p0l1k2.855612.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
@@ -79,19 +97,21 @@
                     "EnvName": "env1"
                 }
             }
-        }, {
-            "Core": "hysteria2",
+        },{
+            "Core": "sing",
             "ApiHost": "https://4fltx.423617.xyz",
             "ApiKey": "4Vp9Qk3Nz7Tm2Rx6Hy8Lc1Wd5Js0BaUf",
             "NodeID": 13,
             "NodeType": "hysteria2",
-            "Hysteria2ConfigPath": "/etc/V2bX/hy2config.yaml",
             "Timeout": 30,
-            "ListenIP": "",
+            "ListenIP": "::",
             "SendIP": "0.0.0.0",
             "DeviceOnlineMinTraffic": 200,
+            "MinReportTraffic": 0,
+            "TCPFastOpen": false,
+            "SniffEnabled": true,
             "CertConfig": {
-                "CertMode": "http",
+                "CertMode": "self",
                 "RejectUnknownSni": false,
                 "CertDomain": "j3h4g5f6.855612.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
