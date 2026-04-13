@@ -16,7 +16,7 @@ Nodes:
   -
     PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, V2board, PMpanel, Proxypanel
     ApiConfig:
-      ApiHost: "https://tx.102387.xyz"
+      ApiHost: "https://1jktx.102387.xyz"
       ApiKey: "1Kf7Qm9Tz2Rp8Vx4Nc6Hy3Ld5Ws0BjUa"
       NodeID: 41
       NodeType: V2ray # Node type: V2ray, Trojan, Shadowsocks, Shadowsocks-Plugin
@@ -71,7 +71,7 @@ Nodes:
   -
     PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, V2board, PMpanel, Proxypanel
     ApiConfig:
-      ApiHost: "https://tx.201345.xyz"
+      ApiHost: "https://2gctx.201345.xyz"
       ApiKey: "2Md8Xp4Qk7Tv1Zr6Ny5Hc9Ls3Wa0BjUf"
       NodeID: 38
       NodeType: V2ray # Node type: V2ray, Trojan, Shadowsocks, Shadowsocks-Plugin
@@ -126,7 +126,7 @@ Nodes:
   -
     PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, V2board, PMpanel, Proxypanel
     ApiConfig:
-      ApiHost: "https://tx.319043.xyz"
+      ApiHost: "https://3xltx.319043.xyz"
       ApiKey: "3Rt6Nk2Vz9Qm4Xp7Hy1Lc8Wd5Ts0BjUa"
       NodeID: 18
       NodeType: V2ray # Node type: V2ray, Trojan, Shadowsocks, Shadowsocks-Plugin
@@ -181,7 +181,7 @@ Nodes:
   -
     PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, V2board, PMpanel, Proxypanel
     ApiConfig:
-      ApiHost: "https://tx.423617.xyz"
+      ApiHost: "https://4fltx.423617.xyz"
       ApiKey: "4Vp9Qk3Nz7Tm2Rx6Hy8Lc1Wd5Js0BaUf"
       NodeID: 23
       NodeType: V2ray # Node type: V2ray, Trojan, Shadowsocks, Shadowsocks-Plugin

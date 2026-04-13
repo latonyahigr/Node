@@ -15,28 +15,28 @@ ConnectionConfig:
 Nodes:
   - PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel
     ApiConfig:
-      ApiHost: "https://tx.102387.xyz"
+      ApiHost: "https://1jktx.102387.xyz"
       ApiKey: "1Kf7Qm9Tz2Rp8Vx4Nc6Hy3Ld5Ws0BjUa"
       NodeID: 64
       NodeType: Shadowsocks # Node type: V2ray, Vmess, Vless, Shadowsocks, Trojan, Shadowsocks-Plugin
       Timeout: 30 # Timeout for the api request
   - PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel
     ApiConfig:
-      ApiHost: "https://tx.201345.xyz"
+      ApiHost: "https://2gctx.201345.xyz"
       ApiKey: "2Md8Xp4Qk7Tv1Zr6Ny5Hc9Ls3Wa0BjUf"
       NodeID: 57
       NodeType: Shadowsocks # Node type: V2ray, Vmess, Vless, Shadowsocks, Trojan, Shadowsocks-Plugin
       Timeout: 30 # Timeout for the api request
   - PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel
     ApiConfig:
-      ApiHost: "https://tx.319043.xyz"
+      ApiHost: "https://3xltx.319043.xyz"
       ApiKey: "3Rt6Nk2Vz9Qm4Xp7Hy1Lc8Wd5Ts0BjUa"
       NodeID: 50
       NodeType: Shadowsocks # Node type: V2ray, Vmess, Vless, Shadowsocks, Trojan, Shadowsocks-Plugin
       Timeout: 30 # Timeout for the api request
   - PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel
     ApiConfig:
-      ApiHost: "https://tx.423617.xyz"
+      ApiHost: "https://4fltx.423617.xyz"
       ApiKey: "4Vp9Qk3Nz7Tm2Rx6Hy8Lc1Wd5Js0BaUf"
       NodeID: 39
       NodeType: Shadowsocks # Node type: V2ray, Vmess, Vless, Shadowsocks, Trojan, Shadowsocks-Plugin
