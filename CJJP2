@@ -3,9 +3,9 @@ Log:
   AccessPath: # /etc/XrayR/access.Log
   ErrorPath: # /etc/XrayR/error.log
 DnsConfigPath: # /etc/XrayR/dns.json # 
-RouteConfigPath: # /etc/XrayR/route.json # 
+RouteConfigPath:  /etc/XrayR/route.json # 
 InboundConfigPath: # /etc/XrayR/custom_inbound.json # 
-OutboundConfigPath: # /etc/XrayR/custom_outbound.json # 
+OutboundConfigPath:  /etc/XrayR/custom_outbound.json # 
 ConnectionConfig:
   Handshake: 4 # 
   ConnIdle: 30 # 
