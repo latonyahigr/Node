@@ -1,43 +1,43 @@
 Log:
-  Level: warning # Log level: none, error, warning, info, debug
+  Level: warning # 
   AccessPath: # /etc/XrayR/access.Log
   ErrorPath: # /etc/XrayR/error.log
-DnsConfigPath: # /etc/XrayR/dns.json # Path to dns config, check https://xtls.github.io/config/dns.html for help
-RouteConfigPath:  /etc/XrayR/route.json # Path to route config, check https://xtls.github.io/config/routing.html for help
-InboundConfigPath: # /etc/XrayR/custom_inbound.json # Path to custom inbound config, check https://xtls.github.io/config/inbound.html for help
-OutboundConfigPath:  /etc/XrayR/custom_outbound.json # Path to custom outbound config, check https://xtls.github.io/config/outbound.html for help
+DnsConfigPath: # /etc/XrayR/dns.json # 
+RouteConfigPath:  /etc/XrayR/route.json # 
+InboundConfigPath: # /etc/XrayR/custom_inbound.json # 
+OutboundConfigPath:  /etc/XrayR/custom_outbound.json # 
 ConnectionConfig:
-  Handshake: 4 # Handshake time limit, Second
-  ConnIdle: 30 # Connection idle time limit, Second
-  UplinkOnly: 2 # Time limit when the connection downstream is closed, Second
-  DownlinkOnly: 4 # Time limit when the connection is closed after the uplink is closed, Second
-  BufferSize: 64 # The internal cache size of each connection, kB
+  Handshake: 4 #
+  ConnIdle: 30 # 
+  UplinkOnly: 2 # 
+  DownlinkOnly: 4 # 
+  BufferSize: 64 # 
 Nodes: 
-  - PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel
+  - PanelType: "NewV2board" # 
     ApiConfig:
       ApiHost: "https://1jktx.102387.xyz"
       ApiKey: "1Kf7Qm9Tz2Rp8Vx4Nc6Hy3Ld5Ws0BjUa"
       NodeID: 28
-      NodeType: V2ray # Node type: V2ray, Vmess, Vless, Shadowsocks, Trojan, Shadowsocks-Plugin
-      Timeout: 30 # Timeout for the api request
-  - PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel
+      NodeType: V2ray # 
+      Timeout: 30 # 
+  - PanelType: "NewV2board" # 
     ApiConfig:
       ApiHost: "https://2gctx.201345.xyz"
       ApiKey: "2Md8Xp4Qk7Tv1Zr6Ny5Hc9Ls3Wa0BjUf"
       NodeID: 27
-      NodeType: V2ray # Node type: V2ray, Vmess, Vless, Shadowsocks, Trojan, Shadowsocks-Plugin
-      Timeout: 30 # Timeout for the api request
-  - PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel
+      NodeType: V2ray # 
+      Timeout: 30 # 
+  - PanelType: "NewV2board" # 
     ApiConfig:
       ApiHost: "https://3xltx.319043.xyz"
       ApiKey: "3Rt6Nk2Vz9Qm4Xp7Hy1Lc8Wd5Ts0BjUa"
       NodeID: 17
-      NodeType: V2ray # Node type: V2ray, Vmess, Vless, Shadowsocks, Trojan, Shadowsocks-Plugin
-      Timeout: 30 # Timeout for the api request
-  - PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel
+      NodeType: V2ray # 
+      Timeout: 30 # 
+  - PanelType: "NewV2board" # 
     ApiConfig:
       ApiHost: "https://4fltx.423617.xyz"
       ApiKey: "4Vp9Qk3Nz7Tm2Rx6Hy8Lc1Wd5Js0BaUf"
       NodeID: 26
-      NodeType: V2ray # Node type: V2ray, Vmess, Vless, Shadowsocks, Trojan, Shadowsocks-Plugin
-      Timeout: 30 # Timeout for the api request
+      NodeType: V2ray # 
+      Timeout: 30 # 
