@@ -15,29 +15,29 @@ ConnectionConfig:
 Nodes:
   - PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel
     ApiConfig:
-      ApiHost: "https://tx.102387.xyz"
-      ApiKey: "aB7kD4sH2jL8mN5pQ1rS6tV9wX0yZ3aB7cD2eF5gH1iJ8kL6mN3pQ0rS9"
+      ApiHost: "https://1jktx.102387.xyz"
+      ApiKey: "1Kf7Qm9Tz2Rp8Vx4Nc6Hy3Ld5Ws0BjUa"
       NodeID: 63
       NodeType: Shadowsocks # Node type: V2ray, Vmess, Vless, Shadowsocks, Trojan, Shadowsocks-Plugin
       Timeout: 30 # Timeout for the api request
   - PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel
     ApiConfig:
-      ApiHost: "https://tx.201345.xyz"
-      ApiKey: "M2nP9qR4sT7vW1xY5zA0bC8dE3fG6hJ1kL9mN4oP7qR2sT5vW8xY3zA6bC0"
+      ApiHost: "https://2gctx.201345.xyz"
+      ApiKey: "2Md8Xp4Qk7Tv1Zr6Ny5Hc9Ls3Wa0BjUf"
       NodeID: 56
       NodeType: Shadowsocks # Node type: V2ray, Vmess, Vless, Shadowsocks, Trojan, Shadowsocks-Plugin
       Timeout: 30 # Timeout for the api request
   - PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel
     ApiConfig:
-      ApiHost: "https://tx.319043.xyz"
-      ApiKey: "X8yZ1aB4cD7eF0gH3iJ6kL9mN2oP5qR8sT1vW4xY7zA0bC3dE6fG9hJ2kL5"
+      ApiHost: "https://3xltx.319043.xyz"
+      ApiKey: "3Rt6Nk2Vz9Qm4Xp7Hy1Lc8Wd5Ts0BjUa"
       NodeID: 49
       NodeType: Shadowsocks # Node type: V2ray, Vmess, Vless, Shadowsocks, Trojan, Shadowsocks-Plugin
       Timeout: 30 # Timeout for the api request
   - PanelType: "NewV2board" # Panel type: SSpanel, NewV2board, PMpanel, Proxypanel, V2RaySocks, GoV2Panel
     ApiConfig:
-      ApiHost: "https://tx.423617.xyz"
-      ApiKey: "L2mN5pQ8rS1tV4wX7yZ0aB3cD6eF9gH2iJ5kL8nM1oP4qR7sT0vW3xY6zA9"
+      ApiHost: "https://4fltx.423617.xyz"
+      ApiKey: "4Vp9Qk3Nz7Tm2Rx6Hy8Lc1Wd5Js0BaUf"
       NodeID: 38
       NodeType: Shadowsocks # Node type: V2ray, Vmess, Vless, Shadowsocks, Trojan, Shadowsocks-Plugin
       Timeout: 30 # Timeout for the api request
