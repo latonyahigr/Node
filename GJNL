@@ -1,0 +1,43 @@
+Log:
+  Level: warning # 
+  AccessPath: # /etc/XrayR/access.Log
+  ErrorPath: # /etc/XrayR/error.log
+DnsConfigPath: # /etc/XrayR/dns.json # 
+RouteConfigPath:  /etc/XrayR/route.json # 
+InboundConfigPath: # /etc/XrayR/custom_inbound.json # 
+OutboundConfigPath:  /etc/XrayR/custom_outbound.json # 
+ConnectionConfig:
+  Handshake: 4 #
+  ConnIdle: 30 # 
+  UplinkOnly: 2 # 
+  DownlinkOnly: 4 # 
+  BufferSize: 64 # 
+Nodes:
+  - PanelType: "NewV2board" # 
+    ApiConfig:
+      ApiHost: "https://1jktx.102387.xyz"
+      ApiKey: "1Kf7Qm9Tz2Rp8Vx4Nc6Hy3Ld5Ws0BjUa"
+      NodeID: 32
+      NodeType: V2ray # 
+      Timeout: 30 # 
+  - PanelType: "NewV2board" # 
+    ApiConfig:
+      ApiHost: "https://2gctx.201345.xyz"
+      ApiKey: "2Md8Xp4Qk7Tv1Zr6Ny5Hc9Ls3Wa0BjUf"
+      NodeID: 31
+      NodeType: V2ray # 
+      Timeout: 30 # 
+  - PanelType: "NewV2board" # 
+    ApiConfig:
+      ApiHost: "https://3xltx.319043.xyz"
+      ApiKey: "3Rt6Nk2Vz9Qm4Xp7Hy1Lc8Wd5Ts0BjUa"
+      NodeID: 20
+      NodeType: V2ray # 
+      Timeout: 30 # 
+  - PanelType: "NewV2board" # 
+    ApiConfig:
+      ApiHost: "https://4fltx.423617.xyz"
+      ApiKey: "4Vp9Qk3Nz7Tm2Rx6Hy8Lc1Wd5Js0BaUf"
+      NodeID: 29
+      NodeType: V2ray # 
+      Timeout: 30 # 
