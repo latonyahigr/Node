@@ -97,30 +97,5 @@
                     "EnvName": "env1"
                 }
             }
-        },{
-            "Core": "sing",
-            "ApiHost": "https://4fltx.423617.xyz",
-            "ApiKey": "4Vp9Qk3Nz7Tm2Rx6Hy8Lc1Wd5Js0BaUf",
-            "NodeID": 18,
-            "NodeType": "hysteria2",
-            "Timeout": 30,
-            "ListenIP": "::",
-            "SendIP": "0.0.0.0",
-            "DeviceOnlineMinTraffic": 200,
-            "MinReportTraffic": 0,
-            "TCPFastOpen": false,
-            "SniffEnabled": true,
-            "CertConfig": {
-                "CertMode": "self",
-                "RejectUnknownSni": false,
-                "CertDomain": "l1k2j3h4.826545.xyz",
-                "CertFile": "/etc/V2bX/fullchain.cer",
-                "KeyFile": "/etc/V2bX/cert.key",
-                "Email": "v2bx@github.com",
-                "Provider": "cloudflare",
-                "DNSEnv": {
-                    "EnvName": "env1"
-                }
-            }
         }]
 }
