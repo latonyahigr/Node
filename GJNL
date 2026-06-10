@@ -34,10 +34,3 @@ Nodes:
       NodeID: 20
       NodeType: V2ray # 
       Timeout: 30 # 
-  - PanelType: "NewV2board" # 
-    ApiConfig:
-      ApiHost: "https://4fltx.423617.xyz"
-      ApiKey: "4Vp9Qk3Nz7Tm2Rx6Hy8Lc1Wd5Js0BaUf"
-      NodeID: 29
-      NodeType: V2ray # 
-      Timeout: 30 # 
