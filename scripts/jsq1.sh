@@ -14,6 +14,10 @@ systemctl enable --now chrony
 chronyc makestep
 hwclock --systohc
 
+echo "当前时间：$(date)"
+timedatectl status
+chronyc tracking
+
 echo "========== 开启官方 BBR =========="
 cat >/etc/sysctl.d/99-bbr.conf <<EOF
 net.core.default_qdisc=fq
