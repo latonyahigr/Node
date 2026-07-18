@@ -7,8 +7,12 @@ echo "========== 更新系统 =========="
 apt-get update
 apt-get -y upgrade
 
-echo "========== 设置时区 =========="
+echo "========== 设置时区和时间同步 =========="
 timedatectl set-timezone Asia/Shanghai
+apt-get install -y chrony
+systemctl enable --now chrony
+chronyc makestep
+hwclock --systohc
 
 echo "========== 开启官方 BBR =========="
 cat >/etc/sysctl.d/99-bbr.conf <<EOF
