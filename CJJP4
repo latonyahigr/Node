@@ -24,7 +24,7 @@
     }],
     "Nodes": [{
             "Core": "sing",
-            "ApiHost": "https://1jktx.102387.xyz",
+            "ApiHost": "https://1jktx.831141.xyz",
             "ApiKey": "1Kf7Qm9Tz2Rp8Vx4Nc6Hy3Ld5Ws0BjUa",
             "NodeID": 50,
             "NodeType": "hysteria2",
@@ -38,7 +38,7 @@
             "CertConfig": {
                 "CertMode": "self",
                 "RejectUnknownSni": false,
-                "CertDomain": "q1w2e3r4.855612.xyz",
+                "CertDomain": "edge-jp1.831141.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
@@ -63,7 +63,7 @@
             "CertConfig": {
                 "CertMode": "self",
                 "RejectUnknownSni": false,
-                "CertDomain": "t5y6u7i8.855612.xyz",
+                "CertDomain": "media-jp2.831141.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
@@ -88,7 +88,7 @@
             "CertConfig": {
                 "CertMode": "self",
                 "RejectUnknownSni": false,
-                "CertDomain": "o9p0l1k2.855612.xyz",
+                "CertDomain": "cdn-jp3.831141.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
