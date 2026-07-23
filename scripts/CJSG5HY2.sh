@@ -9,7 +9,7 @@ readonly NFU_INSTALL_URL="https://config.nfdns.xyz/nfu_sh/install.sh"
 readonly NFU_SERVICE_INFO_URL="https://config.nfdns.xyz/service-information.json"
 readonly EXPECTED_NODE_COUNT=3
 NFU_UUID="41e13fb4-f688-4652-8aef-fcfcc27f0d21"
-readonly EXPECTED_PORTS=(8443 8080 27017)
+readonly EXPECTED_PORTS=(8443 8080 3306)
 
 WORK_DIR=""
 
@@ -290,5 +290,5 @@ for port in "${EXPECTED_PORTS[@]}"; do
 done
 
 echo
-echo "请确认云服务商防火墙已放行：8443/UDP、8080/UDP、27017/UDP"
+echo "请确认云服务商防火墙已放行：8443/UDP、8080/UDP、3306/UDP"
 echo "随后更新客户端订阅并逐个测试三个节点。"
