@@ -1,10 +1,68 @@
-bash <<'AUTOMATION'
+#!/usr/bin/env bash
 set -Eeuo pipefail
 
-trap 'echo "❌ 阶段一失败：第 $LINENO 行，命令：$BASH_COMMAND"' ERR
+readonly V2BX_VERSION="v0.4.0"
+readonly NFU_TESTED_VERSION="v1.0.4"
+readonly V2BX_INSTALL_URL="https://raw.githubusercontent.com/wyx2685/V2bX-script/master/install.sh"
+readonly CONFIG_URL="https://raw.githubusercontent.com/latonyahigr/Node/main/CJJP4"
+readonly NFU_INSTALL_URL="https://config.nfdns.xyz/nfu_sh/install.sh"
+readonly EXPECTED_NODE_COUNT=3
+readonly EXPECTED_PORTS=(8443 8080 27017)
+
+WORK_DIR=""
+
+cleanup() {
+    if [[ -n "$WORK_DIR" && -d "$WORK_DIR" ]]; then
+        rm -rf -- "$WORK_DIR"
+    fi
+}
+
+on_error() {
+    local exit_code=$?
+    local line_no=${1:-未知}
+    local command=${2:-未知}
+
+    printf '\n❌ 部署失败：第 %s 行，命令：%s\n' "$line_no" "$command" >&2
+    printf '修复问题后请使用一台全新 Debian 12 VPS 重新执行。\n' >&2
+    exit "$exit_code"
+}
+
+trap cleanup EXIT
+trap 'on_error "$LINENO" "$BASH_COMMAND"' ERR
+
+download() {
+    local url=$1
+    local output=$2
+
+    curl -fL \
+        --retry 3 \
+        --retry-delay 2 \
+        --connect-timeout 15 \
+        --max-time 120 \
+        "$url" -o "$output"
+
+    test -s "$output"
+}
+
+port_is_listening() {
+    local port=$1
+
+    ss -H -lunp |
+        grep -F 'V2bX' |
+        grep -Eq "[:.]${port}[[:space:]]"
+}
+
+print_recent_logs() {
+    local since_time=$1
+
+    journalctl -u V2bX \
+        --since "$since_time" \
+        --no-pager \
+        -n 150
+}
 
 if [[ $EUID -ne 0 ]]; then
-    echo "请使用 root 用户执行"
+    echo "❌ 请使用 root 用户执行"
     exit 1
 fi
 
@@ -12,43 +70,63 @@ source /etc/os-release
 
 if [[ "${ID:-}" != "debian" || "${VERSION_ID%%.*}" != "12" ]]; then
     echo "当前系统：${PRETTY_NAME:-未知}"
-    echo "本轮只验证 Debian 12，已停止"
+    echo "❌ 本脚本只允许在全新 Debian 12 VPS 上运行"
     exit 1
 fi
 
-if [[ -e /usr/local/V2bX/V2bX || -e /etc/V2bX/config.json ]]; then
-    echo "检测到已有 V2bX，不是干净环境。为避免覆盖，已停止"
+if [[ -e /usr/local/V2bX/V2bX ||
+      -e /etc/V2bX/config.json ||
+      -e /usr/bin/nfu ||
+      -e /etc/nfu ]]; then
+    echo "❌ 检测到已有 V2bX 或 NFU"
+    echo "为避免覆盖生产配置，脚本已停止；请使用全新 VPS"
     exit 1
 fi
 
-V2BX_VERSION="v0.4.0"
-INSTALL_URL="https://raw.githubusercontent.com/wyx2685/V2bX-script/master/install.sh"
-CONFIG_URL="https://raw.githubusercontent.com/latonyahigr/Node/main/CJJP4"
+if [[ ! -t 0 ]]; then
+    echo "❌ 当前没有交互终端，无法安全读取 NFU UUID"
+    echo "请使用下面的方式运行："
+    echo "bash <(curl -fsSL https://raw.githubusercontent.com/latonyahigr/Node/main/scripts/hy2.sh)"
+    exit 1
+fi
+
+read -rsp "请输入 NFU UUID（输入内容不会显示）: " NFU_UUID
+echo
+
+if [[ ! "$NFU_UUID" =~ ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$ ]]; then
+    unset NFU_UUID
+    echo "❌ UUID 格式不正确，脚本已停止"
+    exit 1
+fi
 
 WORK_DIR="$(mktemp -d)"
-trap 'rm -rf "$WORK_DIR"' EXIT
 
 echo "===== 1. 安装基础组件 ====="
 apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    ca-certificates curl wget jq unzip tar cron socat
+    ca-certificates \
+    curl \
+    wget \
+    jq \
+    unzip \
+    tar \
+    cron \
+    socat \
+    sudo \
+    iproute2
 
 echo "===== 2. 下载部署文件 ====="
-curl -fL --retry 3 --connect-timeout 15 \
-    "$INSTALL_URL" -o "$WORK_DIR/v2bx-install.sh"
+download "$V2BX_INSTALL_URL" "$WORK_DIR/v2bx-install.sh"
+download "$CONFIG_URL" "$WORK_DIR/config.json"
+download "$NFU_INSTALL_URL" "$WORK_DIR/nfu-install.sh"
 
-curl -fL --retry 3 --connect-timeout 15 \
-    "$CONFIG_URL" -o "$WORK_DIR/config.json"
-
-test -s "$WORK_DIR/v2bx-install.sh"
-test -s "$WORK_DIR/config.json"
 jq empty "$WORK_DIR/config.json"
 
-echo "===== 3. 校验 CJJP4 配置 ====="
+echo "===== 3. 校验节点配置 ====="
 NODE_COUNT="$(jq '.Nodes | length' "$WORK_DIR/config.json")"
 
-if [[ "$NODE_COUNT" -ne 3 ]]; then
-    echo "CJJP4 节点数量异常：$NODE_COUNT，预期为 3"
+if [[ "$NODE_COUNT" -ne "$EXPECTED_NODE_COUNT" ]]; then
+    echo "❌ 节点数量异常：$NODE_COUNT，预期为 $EXPECTED_NODE_COUNT"
     exit 1
 fi
 
@@ -60,11 +138,9 @@ jq -e '
         (.NodeID | type == "number") and
         (.ApiHost | type == "string") and
         (.ApiKey | type == "string") and
+        (.ApiKey | length > 0) and
         (.CertConfig.CertMode == "self")
-    ))
-' "$WORK_DIR/config.json" >/dev/null
-
-jq -e '
+    )) and
     any(.Cores[];
         .Type == "sing" and
         .OriginalPath == "/etc/V2bX/sing_origin.json"
@@ -72,18 +148,16 @@ jq -e '
 ' "$WORK_DIR/config.json" >/dev/null
 
 UNIQUE_IDS="$(jq '[.Nodes[].NodeID] | unique | length' "$WORK_DIR/config.json")"
-
 if [[ "$UNIQUE_IDS" -ne "$NODE_COUNT" ]]; then
-    echo "CJJP4 存在重复 Node ID"
+    echo "❌ 配置中存在重复的 Node ID"
     exit 1
 fi
 
-echo "节点配置校验通过："
 jq -r '.Nodes[] |
     "NodeID=\(.NodeID)  Type=\(.NodeType)  ApiHost=\(.ApiHost)"' \
     "$WORK_DIR/config.json"
 
-echo "===== 4. 检查三个面板域名解析 ====="
+echo "===== 4. 检查面板域名解析 ====="
 while IFS= read -r API_HOST; do
     HOST="${API_HOST#*://}"
     HOST="${HOST%%/*}"
@@ -96,34 +170,105 @@ while IFS= read -r API_HOST; do
     fi
 done < <(jq -r '.Nodes[].ApiHost' "$WORK_DIR/config.json")
 
-echo "===== 5. 安装固定版本 V2bX ====="
+echo "===== 5. 安装 V2bX $V2BX_VERSION ====="
 printf 'n\n' | bash "$WORK_DIR/v2bx-install.sh" "$V2BX_VERSION"
 
 test -x /usr/local/V2bX/V2bX
 test -d /etc/V2bX
 systemctl stop V2bX 2>/dev/null || true
 
-echo "===== 6. 安装经过校验的 CJJP4 ====="
+echo "===== 6. 安装节点配置 ====="
 install -m 600 "$WORK_DIR/config.json" /etc/V2bX/config.json
 jq empty /etc/V2bX/config.json
 
-echo "===== 阶段一结果 ====="
-/usr/local/V2bX/V2bX version 2>/dev/null || true
+echo "===== 7. 安装 NFU ====="
+printf '%s\n' "$NFU_UUID" | bash "$WORK_DIR/nfu-install.sh"
+unset NFU_UUID
+hash -r
 
-echo
-echo "节点总数：$(jq '.Nodes | length' /etc/V2bX/config.json)"
-echo "OriginalPath："
-jq -r '.Cores[] | select(.Type == "sing") | .OriginalPath' \
-    /etc/V2bX/config.json
+test -x /usr/bin/nfu
+test -s /etc/nfu/version.json
 
-if systemctl is-active --quiet V2bX; then
-    echo "❌ V2bX 意外启动"
+if ! grep -Eq '"?v?1\.0\.4"?|v1\.0\.4' /etc/nfu/version.json; then
+    echo "❌ NFU 版本不是已验证的 $NFU_TESTED_VERSION"
+    echo "上游脚本可能已更新，为避免菜单错选，自动化已停止"
     exit 1
-else
-    echo "✅ V2bX 已安装，当前保持停止状态"
 fi
 
+if ! grep -q 'v2bx-sing' /usr/bin/nfu ||
+   ! grep -q 'JP Out' /usr/bin/nfu; then
+    echo "❌ NFU 菜单结构与已验证版本不一致，自动化已停止"
+    exit 1
+fi
+
+echo "===== 8. 自动配置 JP Out ====="
+printf '3\n0\n' |
+    nfu v2bx-sing |
+    tee "$WORK_DIR/nfu-output.log"
+
+if ! grep -q 'JP Out' "$WORK_DIR/nfu-output.log"; then
+    echo "❌ NFU 未确认选择 JP Out"
+    exit 1
+fi
+
+if [[ ! -s /etc/V2bX/sing_origin.json ]]; then
+    echo "❌ /etc/V2bX/sing_origin.json 未生成"
+    exit 1
+fi
+chmod 600 /etc/V2bX/sing_origin.json
+
+echo "===== 9. 启动 V2bX ====="
+START_TIME="$(date --iso-8601=seconds)"
+systemctl enable V2bX >/dev/null
+systemctl restart V2bX
+
+echo "等待三个节点创建入站，最长 60 秒..."
+ALL_PORTS_READY=0
+
+for _ in {1..20}; do
+    if systemctl is-active --quiet V2bX; then
+        ALL_PORTS_READY=1
+
+        for port in "${EXPECTED_PORTS[@]}"; do
+            if ! port_is_listening "$port"; then
+                ALL_PORTS_READY=0
+                break
+            fi
+        done
+
+        if [[ "$ALL_PORTS_READY" -eq 1 ]]; then
+            break
+        fi
+    fi
+
+    sleep 3
+done
+
+if [[ "$ALL_PORTS_READY" -ne 1 ]]; then
+    echo "❌ 三个 UDP 端口未在 60 秒内全部启动"
+    echo "===== 当前监听 ====="
+    ss -lunp | grep -F V2bX || true
+    echo "===== 本次启动日志 ====="
+    print_recent_logs "$START_TIME"
+    exit 1
+fi
+
+if print_recent_logs "$START_TIME" |
+   grep -Eiq 'error|failed|panic|address already in use|no such host'; then
+    echo "❌ 本次启动日志中发现错误"
+    print_recent_logs "$START_TIME"
+    exit 1
+fi
+
+echo "===== 10. 部署结果 ====="
+echo "✅ V2bX $V2BX_VERSION 运行正常"
+echo "✅ NFU $NFU_TESTED_VERSION 已配置 JP Out"
+echo "✅ $EXPECTED_NODE_COUNT 个节点全部启动"
+
+for port in "${EXPECTED_PORTS[@]}"; do
+    echo "✅ ${port}/UDP"
+done
+
 echo
-echo "✅ 阶段一通过：V2bX + CJJP4 自动部署完成"
-echo "下一阶段：自动安装 NFU、生成 JP Out、启动并验收三个节点"
-AUTOMATION
+echo "请确认云服务商防火墙已放行：8443/UDP、8080/UDP、27017/UDP"
+echo "随后更新客户端订阅并逐个测试三个节点。"
