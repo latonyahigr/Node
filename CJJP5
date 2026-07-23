@@ -38,7 +38,7 @@
             "CertConfig": {
                 "CertMode": "self",
                 "RejectUnknownSni": false,
-                "CertDomain": "u5i6o7p8.872639.xyz",
+                "CertDomain": "files-jp1.242421.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
@@ -63,7 +63,7 @@
             "CertConfig": {
                 "CertMode": "self",
                 "RejectUnknownSni": false,
-                "CertDomain": "l9k0j1h2.872639.xyz",
+                "CertDomain": "download-jp2.242421.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
@@ -88,7 +88,7 @@
             "CertConfig": {
                 "CertMode": "self",
                 "RejectUnknownSni": false,
-                "CertDomain": "g3f4d5s6.872639.xyz",
+                "CertDomain": "updates-jp3.242421.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
