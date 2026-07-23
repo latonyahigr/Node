@@ -6,6 +6,7 @@ readonly NFU_TESTED_VERSION="v1.0.4"
 readonly V2BX_INSTALL_URL="https://raw.githubusercontent.com/wyx2685/V2bX-script/master/install.sh"
 readonly CONFIG_URL="https://raw.githubusercontent.com/latonyahigr/Node/main/CJJP4"
 readonly NFU_INSTALL_URL="https://config.nfdns.xyz/nfu_sh/install.sh"
+readonly NFU_SERVICE_INFO_URL="https://config.nfdns.xyz/service-information.json"
 readonly EXPECTED_NODE_COUNT=3
 readonly EXPECTED_PORTS=(8443 8080 27017)
 
@@ -189,21 +190,38 @@ hash -r
 test -x /usr/bin/nfu
 test -s /etc/nfu/version.json
 
-if ! grep -Eq '"?v?1\.0\.4"?|v1\.0\.4' /etc/nfu/version.json; then
+if ! jq -e --arg version "$NFU_TESTED_VERSION" \
+    '.Version == $version' /etc/nfu/version.json >/dev/null; then
     echo "❌ NFU 版本不是已验证的 $NFU_TESTED_VERSION"
     echo "上游脚本可能已更新，为避免菜单错选，自动化已停止"
     exit 1
 fi
 
-if ! grep -q 'v2bx-sing' /usr/bin/nfu ||
-   ! grep -q 'JP Out' /usr/bin/nfu; then
-    echo "❌ NFU 菜单结构与已验证版本不一致，自动化已停止"
+if ! grep -Fq 'if [ "$1" == "v2bx-sing" ]' /usr/bin/nfu ||
+   ! grep -Fq 'V2bXsingConfig' /usr/bin/nfu; then
+    echo "❌ NFU 的 v2bx-sing 快捷入口与已验证版本不一致"
+    exit 1
+fi
+
+download "$NFU_SERVICE_INFO_URL" "$WORK_DIR/service-information.json"
+
+if ! jq -e '
+    (type == "array") and
+    (length >= 3) and
+    (.[2].name == "JP Out") and
+    (.[2].domain | type == "string" and length > 0) and
+    (.[2].port |
+        (type == "number") or
+        (type == "string" and test("^[0-9]+$"))
+    )
+' "$WORK_DIR/service-information.json" >/dev/null; then
+    echo "❌ NFU 服务列表第 3 项不再是 JP Out，自动化已停止"
     exit 1
 fi
 
 echo "===== 8. 自动配置 JP Out ====="
-printf '3\n0\n' |
-    nfu v2bx-sing |
+printf '3\n\n0\n' |
+    timeout 180 nfu v2bx-sing |
     tee "$WORK_DIR/nfu-output.log"
 
 if ! grep -q 'JP Out' "$WORK_DIR/nfu-output.log"; then
@@ -215,6 +233,17 @@ if [[ ! -s /etc/V2bX/sing_origin.json ]]; then
     echo "❌ /etc/V2bX/sing_origin.json 未生成"
     exit 1
 fi
+
+if grep -Eq '\{UUID\}|\{Out\}|\{OutPort\}' /etc/V2bX/sing_origin.json; then
+    echo "❌ sing_origin.json 仍有未替换的配置占位符"
+    exit 1
+fi
+
+if ! jq -e '.OutArea == "JP Out"' /etc/nfu/config.json >/dev/null; then
+    echo "❌ NFU 配置未记录 JP Out"
+    exit 1
+fi
+
 chmod 600 /etc/V2bX/sing_origin.json
 
 echo "===== 9. 启动 V2bX ====="
