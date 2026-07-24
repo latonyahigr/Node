@@ -24,9 +24,9 @@
     }],
     "Nodes": [{
             "Core": "sing",
-            "ApiHost": "https://1jktx.102387.xyz",
-            "ApiKey": "1Kf7Qm9Tz2Rp8Vx4Nc6Hy3Ld5Ws0BjUa",
-            "NodeID": 68,
+            "ApiHost": "https://2gctx.201345.xyz",
+            "ApiKey": "2Md8Xp4Qk7Tv1Zr6Ny5Hc9Ls3Wa0BjUf",
+            "NodeID": 60,
             "NodeType": "hysteria2",
             "Timeout": 30,
             "ListenIP": "::",
@@ -38,7 +38,7 @@
             "CertConfig": {
                 "CertMode": "self",
                 "RejectUnknownSni": false,
-                "CertDomain": "jkdxsgok335.815635.xyz",
+                "CertDomain": "gcdxsg7719.851265.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
