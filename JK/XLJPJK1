@@ -5,6 +5,11 @@
     },
     "Cores": [
     {
+        "Type": "hysteria2",
+        "Log": {
+            "Level": "error"
+        }
+    },{
         "Type": "sing",
         "Log": {
             "Level": "error",
