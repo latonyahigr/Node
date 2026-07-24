@@ -7,6 +7,7 @@ readonly V2BX_INSTALL_URL="https://raw.githubusercontent.com/wyx2685/V2bX-script
 readonly CONFIG_URL="https://raw.githubusercontent.com/latonyahigr/Node/main/CJSG4"
 readonly NFU_INSTALL_URL="https://config.nfdns.xyz/nfu_sh/install.sh"
 readonly EXPECTED_NODE_COUNT=3
+NFU_UUID="41e13fb4-f688-4652-8aef-fcfcc27f0d21"
 readonly EXPECTED_PORTS=(8443 8080 27017)
 
 WORK_DIR=""
@@ -82,16 +83,6 @@ if [[ -e /usr/local/V2bX/V2bX ||
     echo "为避免覆盖生产配置，脚本已停止；请使用全新 VPS"
     exit 1
 fi
-
-if [[ ! -t 0 ]]; then
-    echo "❌ 当前没有交互终端，无法安全读取 NFU UUID"
-    echo "请使用下面的方式运行："
-    echo "bash <(curl -fsSL https://raw.githubusercontent.com/latonyahigr/Node/main/scripts/hy2.sh)"
-    exit 1
-fi
-
-read -rsp "请输入 NFU UUID（输入内容不会显示）: " NFU_UUID
-echo
 
 if [[ ! "$NFU_UUID" =~ ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$ ]]; then
     unset NFU_UUID
@@ -202,7 +193,7 @@ if ! grep -q 'v2bx-sing' /usr/bin/nfu ||
 fi
 
 echo "===== 8. 自动配置 JP Out ====="
-printf '3\n0\n' |
+printf '5\n0\n' |
     nfu v2bx-sing |
     tee "$WORK_DIR/nfu-output.log"
 
