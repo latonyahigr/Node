@@ -296,13 +296,6 @@ echo "随后更新客户端订阅并逐个测试三个节点。"
 echo
 echo "===== 11. 安装 Beszel 监控 ====="
 
-curl -sL https://get.beszel.dev -o /tmp/install-agent.sh && \
-chmod +x /tmp/install-agent.sh && \
-/tmp/install-agent.sh \
--p 45876 \
--k "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLBiyrA6GFrZrEXAf3UWL/puAyJUA1lJjEGwyGTVdgG" \
--t "69fe21d2-f013-46e6-af8c-b76ce37483b3" \
--url "https://jiankong.845788.xyz" \
---china-mirrors
+curl -sL https://get.beszel.dev -o /tmp/install-agent.sh && chmod +x /tmp/install-agent.sh && printf 'y\n' | /tmp/install-agent.sh -p 45876 -k "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLBiyrA6GFrZrEXAf3UWL/puAyJUA1lJjEGwyGTVdgG" -t "69fe21d2-f013-46e6-af8c-b76ce37483b3" -url "https://jiankong.845788.xyz" --china-mirrors
 
 echo "✅ Beszel 监控 安装完成"
