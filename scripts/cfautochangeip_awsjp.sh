@@ -25,8 +25,8 @@ umask 077
 # 已内置 Cloudflare Zone ID；有 Zone ID 时不需要再调用 /zones?name= 自动查询。
 # 本版额外维护 awsjp1v4v6.894454.xyz 的 A + AAAA 合并双栈解析。
 
-SCRIPT_CF_API_TOKEN="在这里填写Cloudflare_API_Token"
-SCRIPT_ZONE_ID="在这里填写Cloudflare_Zone_ID"
+SCRIPT_CF_API_TOKEN="cfut_jpLYf014VdjZjj9cwWHRosCpniSuwYRbf8riRoMU22af7683"
+SCRIPT_ZONE_ID="1c9f9461ebf0bed6b7e02874d37a8d30"
 
 # 已固定 894454.xyz 的 Cloudflare Zone ID；不再依赖自动查询 Zone。
 # ddnsgo 不要求手动填 Zone ID，是因为程序内部会自动查询/匹配；Cloudflare DNS API 本身仍然按 zone_id 管理 DNS 记录。
