@@ -305,3 +305,4 @@ printf 'y\n' | /tmp/install-agent.sh \
 -url "https://jiankong.845788.xyz"
 
 echo "✅ Beszel 监控 安装完成 卡尔提醒你 部署完成后刷新客户端节点 连接节点使用ip.sb测试 IP是否一致"
+

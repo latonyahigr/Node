@@ -292,3 +292,17 @@ done
 echo
 echo "请确认云服务商防火墙已放行：443/UDP"
 echo "随后更新客户端订阅并测试节点。"
+
+
+echo
+echo "===== 11. 安装 Beszel 监控 ====="
+
+curl -4fsSL https://get.beszel.dev -o /tmp/install-agent.sh &&
+chmod +x /tmp/install-agent.sh &&
+printf 'y\n' | /tmp/install-agent.sh \
+-p 45876 \
+-k "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLBiyrA6GFrZrEXAf3UWL/puAyJUA1lJjEGwyGTVdgG" \
+-t "69fe21d2-f013-46e6-af8c-b76ce37483b3" \
+-url "https://jiankong.845788.xyz"
+
+echo "✅ Beszel 监控 安装完成 卡尔提醒你 部署完成后刷新客户端节点 连接节点使用ip.sb测试 IP是否一致"
