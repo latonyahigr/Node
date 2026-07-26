@@ -290,5 +290,5 @@ for port in "${EXPECTED_PORTS[@]}"; do
 done
 
 echo
-echo "请确认云服务商防火墙已放行：8443/UDP、8080/UDP、3306/UDP"
+echo "请确认云服务商防火墙已放行：443/UDP"
 echo "随后更新客户端订阅并测试节点。"
