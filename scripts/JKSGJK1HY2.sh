@@ -7,7 +7,7 @@ readonly V2BX_INSTALL_URL="https://raw.githubusercontent.com/wyx2685/V2bX-script
 readonly CONFIG_URL="https://raw.githubusercontent.com/latonyahigr/Node/main/JK/JKSGJK1"
 readonly NFU_INSTALL_URL="https://config.nfdns.xyz/nfu_sh/install.sh"
 readonly NFU_SERVICE_INFO_URL="https://config.nfdns.xyz/service-information.json"
-readonly EXPECTED_NODE_COUNT=3
+readonly EXPECTED_NODE_COUNT=1
 NFU_UUID="41e13fb4-f688-4652-8aef-fcfcc27f0d21"
 readonly EXPECTED_PORTS=(8443 8080 3306)
 
@@ -242,7 +242,7 @@ START_TIME="$(date --iso-8601=seconds)"
 systemctl enable V2bX >/dev/null
 systemctl restart V2bX
 
-echo "等待三个节点创建入站，最长 60 秒..."
+echo "等待节点创建入站，最长 60 秒..."
 ALL_PORTS_READY=0
 
 for _ in {1..20}; do
@@ -265,7 +265,7 @@ for _ in {1..20}; do
 done
 
 if [[ "$ALL_PORTS_READY" -ne 1 ]]; then
-    echo "❌ 三个 UDP 端口未在 60 秒内全部启动"
+    echo "❌ 节点 UDP 端口未在 60 秒内启动"
     echo "===== 当前监听 ====="
     ss -lunp | grep -F V2bX || true
     echo "===== 本次启动日志 ====="
