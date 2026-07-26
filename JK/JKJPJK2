@@ -26,7 +26,7 @@
             "Core": "sing",
             "ApiHost": "https://1jktx.102387.xyz",
             "ApiKey": "1Kf7Qm9Tz2Rp8Vx4Nc6Hy3Ld5Ws0BjUa",
-            "NodeID": 70,
+            "NodeID": 71,
             "NodeType": "hysteria2",
             "Timeout": 30,
             "ListenIP": "::",
@@ -38,7 +38,7 @@
             "CertConfig": {
                 "CertMode": "self",
                 "RejectUnknownSni": false,
-                "CertDomain": "jkjpapi.800370.xyz",
+                "CertDomain": "jkjpapi.811342.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
