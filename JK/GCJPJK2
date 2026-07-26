@@ -26,7 +26,7 @@
             "Core": "sing",
             "ApiHost": "https://2gctx.201345.xyz",
             "ApiKey": "2Md8Xp4Qk7Tv1Zr6Ny5Hc9Ls3Wa0BjUf",
-            "NodeID": 62,
+            "NodeID": 63,
             "NodeType": "hysteria2",
             "Timeout": 30,
             "ListenIP": "::",
@@ -38,7 +38,7 @@
             "CertConfig": {
                 "CertMode": "self",
                 "RejectUnknownSni": false,
-                "CertDomain": "gcjpdata.800370.xyz",
+                "CertDomain": "gcjpdata.811342.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
