@@ -25,7 +25,7 @@ umask 077
 # 已内置 Cloudflare Zone ID；有 Zone ID 时不需要再调用 /zones?name= 自动查询。
 # 本版额外维护 awsjp1v4v6.894454.xyz 的 A + AAAA 合并双栈解析。
 
-SCRIPT_CF_API_TOKEN="cfut_jpLYf014VdjZjj9cwWHRosCpniSuwYRbf8riRoMU22af7683"
+SCRIPT_CF_API_TOKEN="cfut_7rdFRfP6nfFcsZ4VA4C3pJpmDjvhybCjGocnL8DO70c2b845"
 SCRIPT_ZONE_ID="1c9f9461ebf0bed6b7e02874d37a8d30"
 
 # 已固定 894454.xyz 的 Cloudflare Zone ID；不再依赖自动查询 Zone。
