@@ -16,7 +16,7 @@ NFU_UUID="41e13fb4-f688-4652-8aef-fcfcc27f0d21"
 
 readonly BESZEL_PORT="45876"
 readonly BESZEL_KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLBiyrA6GFrZrEXAf3UWL/puAyJUA1lJjEGwyGTVdgG"
-readonly BESZEL_TOKEN="请填写真实Beszel-Token"
+readonly BESZEL_TOKEN="69fe21d2-f013-46e6-af8c-b76ce37483b3"
 readonly BESZEL_URL="https://jiankong.845788.xyz"
 
 WORK_DIR=""
@@ -387,13 +387,18 @@ echo "14656、22317、31721"
 
 echo "===== 11. 安装 Beszel 监控 ====="
 
-curl -4fsSL https://get.beszel.dev -o /tmp/install-agent.sh &&
-chmod +x /tmp/install-agent.sh &&
-printf 'y\n' | /tmp/install-agent.sh \
--p 45876 \
--k "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLBiyrA6GFrZrEXAf3UWL/puAyJUA1lJjEGwyGTVdgG" \
--t "69fe21d2-f013-46e6-af8c-b76ce37483b3" \
--url "https://jiankong.845788.xyz"
+download \
+    "https://get.beszel.dev" \
+    "$WORK_DIR/install-agent.sh"
+
+chmod 700 "$WORK_DIR/install-agent.sh"
+
+printf 'y\n' |
+    "$WORK_DIR/install-agent.sh" \
+        -p "$BESZEL_PORT" \
+        -k "$BESZEL_KEY" \
+        -t "$BESZEL_TOKEN" \
+        -url "$BESZEL_URL"
 
 if ! systemctl is-active --quiet beszel-agent; then
     echo "❌ Beszel Agent 安装后没有正常运行"
