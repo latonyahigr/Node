@@ -211,8 +211,11 @@ done < <(
 
 echo "===== 5. 安装 V2bX $V2BX_VERSION ====="
 
-printf 'n\n' |
-    bash "$WORK_DIR/v2bx-install.sh" "$V2BX_VERSION"
+(
+    cd "$WORK_DIR"
+    printf 'n\n' |
+        bash ./v2bx-install.sh "$V2BX_VERSION"
+)
 
 test -x /usr/local/V2bX/V2bX
 test -d /etc/V2bX
@@ -393,12 +396,12 @@ download \
 
 chmod 700 "$WORK_DIR/install-agent.sh"
 
-printf 'y\n' |
-    "$WORK_DIR/install-agent.sh" \
-        -p "$BESZEL_PORT" \
-        -k "$BESZEL_KEY" \
-        -t "$BESZEL_TOKEN" \
-        -url "$BESZEL_URL"
+"$WORK_DIR/install-agent.sh" \
+    -p "$BESZEL_PORT" \
+    -k "$BESZEL_KEY" \
+    -t "$BESZEL_TOKEN" \
+    -url "$BESZEL_URL" \
+    --auto-update true
 
 if ! systemctl is-active --quiet beszel-agent; then
     echo "❌ Beszel Agent 安装后没有正常运行"
