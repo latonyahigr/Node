@@ -76,7 +76,7 @@
             "Core": "sing",
             "ApiHost": "https://3xltx.319043.xyz",
             "ApiKey": "3Rt6Nk2Vz9Qm4Xp7Hy1Lc8Wd5Ts0BjUa",
-            "NodeID": 12,
+            "NodeID": 39,
             "NodeType": "vless",
             "Timeout": 30,
             "ListenIP": "::",
