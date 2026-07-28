@@ -10,7 +10,7 @@ readonly NFU_INSTALL_URL="https://config.nfdns.xyz/nfu_sh/install.sh"
 readonly NFU_SERVICE_INFO_URL="https://config.nfdns.xyz/service-information.json"
 
 readonly EXPECTED_NODE_COUNT=3
-readonly EXPECTED_PORTS=(13442 23412 32332)
+readonly EXPECTED_PORTS=(11276 22267 35010)
 
 NFU_UUID="41e13fb4-f688-4652-8aef-fcfcc27f0d21"
 
