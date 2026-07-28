@@ -38,7 +38,7 @@
             "CertConfig": {
                 "CertMode": "none",
                 "RejectUnknownSni": false,
-                "CertDomain": "jkjp-uoii.856812.xyz",
+                "CertDomain": "static-jp1.8267412.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
@@ -63,7 +63,7 @@
             "CertConfig": {
                 "CertMode": "none",
                 "RejectUnknownSni": false,
-                "CertDomain": "gcjp-boss.856812.xyz",
+                "CertDomain": "static-jp2.8267412.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
@@ -88,7 +88,7 @@
             "CertConfig": {
                 "CertMode": "none",
                 "RejectUnknownSni": false,
-                "CertDomain": "xljp-oppo.856812.xyz",
+                "CertDomain": "static-jp3.8267412.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
