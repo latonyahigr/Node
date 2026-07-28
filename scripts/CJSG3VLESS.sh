@@ -5,12 +5,12 @@ readonly V2BX_VERSION="v0.4.0"
 readonly NFU_TESTED_VERSION="v1.0.4"
 
 readonly V2BX_INSTALL_URL="https://raw.githubusercontent.com/wyx2685/V2bX-script/master/install.sh"
-readonly CONFIG_URL="https://raw.githubusercontent.com/latonyahigr/Node/main/vless/CJHK1"
+readonly CONFIG_URL="https://raw.githubusercontent.com/latonyahigr/Node/main/vless/CJSG3"
 readonly NFU_INSTALL_URL="https://config.nfdns.xyz/nfu_sh/install.sh"
 readonly NFU_SERVICE_INFO_URL="https://config.nfdns.xyz/service-information.json"
 
 readonly EXPECTED_NODE_COUNT=3
-readonly EXPECTED_PORTS=(13442 23412 32332)
+readonly EXPECTED_PORTS=(14656 22317 31721)
 
 NFU_UUID="41e13fb4-f688-4652-8aef-fcfcc27f0d21"
 
@@ -286,7 +286,7 @@ fi
 
 echo "===== 8. 自动配置 JP Out ====="
 
-printf '1\n\n0\n' |
+printf '5\n\n0\n' |
     timeout 180 nfu v2bx-sing |
     tee "$WORK_DIR/nfu-output.log"
 
