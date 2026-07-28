@@ -38,7 +38,7 @@
             "CertConfig": {
                 "CertMode": "none",
                 "RejectUnknownSni": false,
-                "CertDomain": "jkus-why.811254.xyz",
+                "CertDomain": "static-us1.8267223.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
@@ -63,7 +63,7 @@
             "CertConfig": {
                 "CertMode": "none",
                 "RejectUnknownSni": false,
-                "CertDomain": "gcus-dontsay.811254.xyz",
+                "CertDomain": "static-us2.8267223.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
@@ -88,7 +88,7 @@
             "CertConfig": {
                 "CertMode": "none",
                 "RejectUnknownSni": false,
-                "CertDomain": "xlus-clli.811254.xyz",
+                "CertDomain": "static-us3.8267223.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
