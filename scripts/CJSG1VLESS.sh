@@ -384,9 +384,6 @@ for port in "${EXPECTED_PORTS[@]}"; do
     echo "✅ ${port}/TCP"
 done
 
-echo
-echo "请确认云服务商防火墙已放行 TCP："
-echo "14656、22317、31721"
 
 echo "===== 11. 安装 Beszel 监控 ====="
 
