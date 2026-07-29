@@ -25,8 +25,8 @@ umask 077
 # 已内置 Cloudflare Zone ID；有 Zone ID 时不需要再调用 /zones?name= 自动查询。
 # 本版额外维护 awssg1v4v6.894454.xyz 的 A + AAAA 合并双栈解析。
 
-SCRIPT_CF_API_TOKEN="cfut_7rdFRfP6nfFcsZ4VA4C3pJpmDjvhybCjGocnL8DO70c2b845"
-SCRIPT_ZONE_ID="1c9f9461ebf0bed6b7e02874d37a8d30"
+SCRIPT_CF_API_TOKEN="填写参数"
+SCRIPT_ZONE_ID="填写参数"
 
 # 已固定 894454.xyz 的 Cloudflare Zone ID；不再依赖自动查询 Zone。
 # ddnsgo 不要求手动填 Zone ID，是因为程序内部会自动查询/匹配；Cloudflare DNS API 本身仍然按 zone_id 管理 DNS 记录。
@@ -77,7 +77,7 @@ CF_PROXIED="${CF_PROXIED:-false}"
 
 # 后台守护模式下，每隔多少秒执行一次 DDNS。
 # 60 = 1 分钟；如需每 5 分钟检测一次，请改成 300。
-894454.xyz
+CHECK_INTERVAL="${CHECK_INTERVAL:-60}"
 
 # 执行失败后，多少秒后重试。
 RETRY_SLEEP="${RETRY_SLEEP:-60}"
