@@ -38,7 +38,7 @@
             "CertConfig": {
                 "CertMode": "none",
                 "RejectUnknownSni": false,
-                "CertDomain": "c4q7.157802.xyz",
+                "CertDomain": "service-mx1.8267963.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
@@ -63,7 +63,7 @@
             "CertConfig": {
                 "CertMode": "none",
                 "RejectUnknownSni": false,
-                "CertDomain": "c4q7.210825.xyz",
+                "CertDomain": "service-mx2.8267963.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
@@ -88,7 +88,7 @@
             "CertConfig": {
                 "CertMode": "none",
                 "RejectUnknownSni": false,
-                "CertDomain": "c4q7.308931.xyz",
+                "CertDomain": "service-mx3.8267963.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
