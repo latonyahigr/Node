@@ -286,7 +286,7 @@ fi
 
 echo "===== 8. 自动配置 JP Out ====="
 
-printf '7\n\n0\n' |
+printf '2\n\n0\n' |
     timeout 180 nfu v2bx-sing |
     tee "$WORK_DIR/nfu-output.log"
 
