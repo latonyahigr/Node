@@ -29,7 +29,7 @@ Nodes:
       Timeout: 30 # 
   - PanelType: "NewV2board" # 
     ApiConfig:
-      ApiHost: "https://3xltx.319043.xyz"
+      ApiHost: "https://3xltx.8267101.xyz"
       ApiKey: "3JKz9Qm4Xp7Hy1L3Rt6Nk2Vz9Qm4Xs0t"
       NodeID: 44
       NodeType: V2ray # 
