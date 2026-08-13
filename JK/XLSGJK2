@@ -38,7 +38,7 @@
             "CertConfig": {
                 "CertMode": "self",
                 "RejectUnknownSni": false,
-                "CertDomain": "xldxsg89data.812457.xyz",
+                "CertDomain": "26081223.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
