@@ -38,7 +38,7 @@
             "CertConfig": {
                 "CertMode": "self",
                 "RejectUnknownSni": false,
-                "CertDomain": "edge-us1.267820.xyz",
+                "CertDomain": "edge-us1.26081287.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
@@ -63,7 +63,7 @@
             "CertConfig": {
                 "CertMode": "self",
                 "RejectUnknownSni": false,
-                "CertDomain": "edge-us2.267820.xyz",
+                "CertDomain": "edge-us2.26081287.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
@@ -88,7 +88,7 @@
             "CertConfig": {
                 "CertMode": "self",
                 "RejectUnknownSni": false,
-                "CertDomain": "edge-us3.267820.xyz",
+                "CertDomain": "edge-us3.26081287.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
