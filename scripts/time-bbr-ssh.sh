@@ -54,7 +54,8 @@ esac
 
 echo "========== 检查当前 SSH 来源 =========="
 
-CURRENT_IP="${SSH_CLIENT%% *}"
+CURRENT_IP="${SSH_CLIENT:-}"
+CURRENT_IP="${CURRENT_IP%% *}"
 
 if [[ -z "$CURRENT_IP" && -n "${SSH_CONNECTION:-}" ]]; then
     CURRENT_IP="${SSH_CONNECTION%% *}"
@@ -88,6 +89,14 @@ echo "========== 安装必要组件 =========="
 
 apt-get update
 
+if command -v debconf-set-selections >/dev/null 2>&1; then
+    echo "iptables-persistent iptables-persistent/autosave_v4 boolean false" \
+        | debconf-set-selections
+
+    echo "iptables-persistent iptables-persistent/autosave_v6 boolean false" \
+        | debconf-set-selections
+fi
+
 apt-get install -y \
     chrony \
     iptables \
@@ -97,10 +106,20 @@ apt-get install -y \
 echo "========== 配置时间同步 =========="
 
 systemctl enable --now chrony
-chronyc makestep || true
 
-echo "✅ 时间同步状态："
-chronyc tracking
+if ! systemctl is-active --quiet chrony; then
+    echo "❌ Chrony 服务启动失败"
+    systemctl status chrony --no-pager || true
+    exit 1
+fi
+
+if chronyc makestep >/dev/null 2>&1; then
+    echo "✅ 系统时间已同步"
+else
+    echo "⚠️ Chrony 已运行，但暂时无法立即校准时间"
+fi
+
+chronyc tracking || true
 
 echo "========== 开启官方 BBR =========="
 
@@ -111,7 +130,7 @@ net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 EOF
 
-sysctl --system >/dev/null
+sysctl -p /etc/sysctl.d/99-bbr.conf >/dev/null
 
 CURRENT_BBR="$(sysctl -n net.ipv4.tcp_congestion_control)"
 CURRENT_QDISC="$(sysctl -n net.core.default_qdisc)"
@@ -151,26 +170,41 @@ if ! iptables -C INPUT \
         -j SSHGUARD
 fi
 
-echo "========== 配置 IPv6 SSH 白名单 =========="
+echo "✅ IPv4 SSH 白名单配置完成"
 
-ip6tables -N SSHGUARD 2>/dev/null || true
-ip6tables -F SSHGUARD
+IPV6_ENABLED=0
 
-for ip in "${ALLOWED_IPV6[@]}"; do
-    ip6tables -A SSHGUARD -s "${ip}/128" -j ACCEPT
-done
+if [[ -s /proc/net/if_inet6 ]] &&
+   ip6tables -L -n >/dev/null 2>&1; then
+    IPV6_ENABLED=1
+fi
 
-ip6tables -A SSHGUARD -j DROP
+if [[ "$IPV6_ENABLED" -eq 1 ]]; then
+    echo "========== 配置 IPv6 SSH 白名单 =========="
 
-if ! ip6tables -C INPUT \
-    -p tcp \
-    --dport "$SSH_PORT" \
-    -j SSHGUARD 2>/dev/null; then
+    ip6tables -N SSHGUARD 2>/dev/null || true
+    ip6tables -F SSHGUARD
 
-    ip6tables -I INPUT 1 \
+    for ip in "${ALLOWED_IPV6[@]}"; do
+        ip6tables -A SSHGUARD -s "${ip}/128" -j ACCEPT
+    done
+
+    ip6tables -A SSHGUARD -j DROP
+
+    if ! ip6tables -C INPUT \
         -p tcp \
         --dport "$SSH_PORT" \
-        -j SSHGUARD
+        -j SSHGUARD 2>/dev/null; then
+
+        ip6tables -I INPUT 1 \
+            -p tcp \
+            --dport "$SSH_PORT" \
+            -j SSHGUARD
+    fi
+
+    echo "✅ IPv6 SSH 白名单配置完成"
+else
+    echo "ℹ️ 服务器未启用 IPv6，已跳过 IPv6 白名单"
 fi
 
 echo "========== 保存防火墙规则 =========="
@@ -178,15 +212,23 @@ echo "========== 保存防火墙规则 =========="
 mkdir -p /etc/iptables
 
 iptables-save >/etc/iptables/rules.v4
-ip6tables-save >/etc/iptables/rules.v6
+
+if [[ "$IPV6_ENABLED" -eq 1 ]]; then
+    ip6tables-save >/etc/iptables/rules.v6
+fi
 
 systemctl enable netfilter-persistent >/dev/null
 systemctl restart netfilter-persistent
 
+if ! systemctl is-active --quiet netfilter-persistent; then
+    echo "❌ 防火墙持久化服务启动失败"
+    systemctl status netfilter-persistent --no-pager || true
+    exit 1
+fi
+
 echo
 echo "========== 配置完成 =========="
 echo "✅ 系统：${PRETTY_NAME:-未知}"
-echo "✅ 时区：$(timedatectl show --property=Timezone --value)"
 echo "✅ 内核：$(uname -r)"
 echo "✅ BBR：$(sysctl -n net.ipv4.tcp_congestion_control)"
 echo "✅ 队列算法：$(sysctl -n net.core.default_qdisc)"
@@ -200,9 +242,14 @@ for ip in "${ALLOWED_IPV4[@]}"; do
     echo "  - $ip"
 done
 
-echo
-echo "允许登录的 IPv6："
+if [[ "$IPV6_ENABLED" -eq 1 ]]; then
+    echo
+    echo "允许登录的 IPv6："
 
-for ip in "${ALLOWED_IPV6[@]}"; do
-    echo "  - $ip"
-done
+    for ip in "${ALLOWED_IPV6[@]}"; do
+        echo "  - $ip"
+    done
+fi
+
+echo
+echo "✅ 时间同步、BBR 和 SSH 白名单全部配置完成"
