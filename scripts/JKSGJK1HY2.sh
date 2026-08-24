@@ -25,8 +25,8 @@ on_error() {
     local command=${2:-未知}
 
     printf '\n❌ 部署失败：第 %s 行，命令：%s\n' "$line_no" "$command" >&2
-    printf '修复问题后请使用一台全新 Debian 12 VPS 重新执行。\n' >&2
-    exit "$exit_code"
+printf '修复问题后请使用全新 Debian 12、Ubuntu 22.04 或 Ubuntu 24.04 VPS 重新执行。\n' >&2
+exit "$exit_code"
 }
 
 trap cleanup EXIT
