@@ -81,12 +81,19 @@ fi
 
 source /etc/os-release
 
-if [[ "${ID:-}" != "debian" ||
-      "${VERSION_ID%%.*}" != "12" ]]; then
-    echo "当前系统：${PRETTY_NAME:-未知}"
-    echo "❌ 本脚本只允许在全新 Debian 12 VPS 上运行"
-    exit 1
-fi
+OS_ID="${ID:-unknown}"
+OS_MAJOR="${VERSION_ID%%.*}"
+
+case "${OS_ID}:${OS_MAJOR}" in
+    debian:12|ubuntu:22|ubuntu:24)
+        echo "✅ 系统检查通过：${PRETTY_NAME:-未知}"
+        ;;
+    *)
+        echo "当前系统：${PRETTY_NAME:-未知}"
+        echo "❌ 仅支持全新 Debian 12、Ubuntu 22.04 或 Ubuntu 24.04"
+        exit 1
+        ;;
+esac
 
 if [[ -e /usr/local/V2bX/V2bX ||
       -e /etc/V2bX/config.json ||
