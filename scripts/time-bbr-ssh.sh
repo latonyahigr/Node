@@ -42,12 +42,12 @@ fi
 source /etc/os-release
 
 case "${ID:-}:${VERSION_ID%%.*}" in
-    debian:12|ubuntu:22|ubuntu:24)
+    debian:11|debian:12|debian:13|ubuntu:*)
         echo "✅ 系统检查通过：${PRETTY_NAME:-未知}"
         ;;
     *)
         echo "当前系统：${PRETTY_NAME:-未知}"
-        echo "❌ 仅支持 Debian 12、Ubuntu 22.04 或 Ubuntu 24.04"
+        echo "❌ 仅支持 Debian 11、12、13 或 Ubuntu"
         exit 1
         ;;
 esac
