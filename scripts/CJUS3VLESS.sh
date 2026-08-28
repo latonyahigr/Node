@@ -34,7 +34,7 @@ on_error() {
 
     printf '\n❌ 部署失败：第 %s 行，命令：%s\n' \
         "$line_no" "$command" >&2
-    printf '修复问题后请使用全新 Debian 12、Ubuntu 22.04 或 Ubuntu 24.04 VPS 重新执行。\n' >&2
+    printf '修复问题后请使用全新 Debian 10–13 或 Ubuntu 20.04/22.04/24.04 VPS 重新执行。\n' >&2
 
     exit "$exit_code"
 }
