@@ -29,7 +29,7 @@ on_error() {
     local command=${2:-未知}
 
     printf '\n❌ 部署失败：第 %s 行，命令：%s\n' "$line_no" "$command" >&2
-    printf '修复问题后请使用全新 Debian 12、Ubuntu 22.04 或 Ubuntu 24.04 VPS 重新执行。\n' >&2
+    printf '修复问题后请使用全新 Debian 10–13 或 Ubuntu 20.04/22.04/24.04 VPS 重新执行。\n' >&2
     exit "$exit_code"
 }
 
@@ -78,12 +78,12 @@ OS_ID="${ID:-unknown}"
 OS_MAJOR="${VERSION_ID%%.*}"
 
 case "${OS_ID}:${OS_MAJOR}" in
-    debian:12|ubuntu:22|ubuntu:24)
+    debian:10|debian:11|debian:12|debian:13|ubuntu:20|ubuntu:22|ubuntu:24)
         echo "✅ 系统检查通过：${PRETTY_NAME:-未知}"
         ;;
     *)
         echo "当前系统：${PRETTY_NAME:-未知}"
-        echo "❌ 仅支持全新 Debian 12、Ubuntu 22.04 或 Ubuntu 24.04"
+        echo "❌ 仅支持 Debian 10–13 或 Ubuntu 20.04/22.04/24.04"
         exit 1
         ;;
 esac
