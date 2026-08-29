@@ -26,7 +26,7 @@
             "Core": "sing",
             "ApiHost": "https://3xltx.8267101.xyz",
             "ApiKey": "3JKz9Qm4Xp7Hy1L3Rt6Nk2Vz9Qm4Xs0t",
-            "NodeID": 59,
+            "NodeID": 63,
             "NodeType": "hysteria2",
             "Timeout": 30,
             "ListenIP": "::",
@@ -38,7 +38,7 @@
             "CertConfig": {
                 "CertMode": "self",
                 "RejectUnknownSni": false,
-                "CertDomain": "26081234.xyz",
+                "CertDomain": "26081249.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
