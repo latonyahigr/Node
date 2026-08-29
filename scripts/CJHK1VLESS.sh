@@ -5,7 +5,7 @@ readonly V2BX_VERSION="v0.4.0"
 readonly NFU_TESTED_VERSION="v1.0.4"
 
 readonly V2BX_INSTALL_URL="https://raw.githubusercontent.com/wyx2685/V2bX-script/master/install.sh"
-readonly CONFIG_URL="https://raw.githubusercontent.com/latonyahigr/Node/main/vless/CJJP1"
+readonly CONFIG_URL="https://raw.githubusercontent.com/latonyahigr/Node/main/vless/CJHK1"
 readonly NFU_INSTALL_URL="https://config.nfdns.xyz/nfu_sh/install.sh"
 readonly NFU_SERVICE_INFO_URL="https://config.nfdns.xyz/service-information.json"
 
