@@ -13,7 +13,7 @@ readonly BESZEL_PORT="45876"
 readonly BESZEL_KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLBiyrA6GFrZrEXAf3UWL/puAyJUA1lJjEGwyGTVdgG"
 readonly BESZEL_TOKEN="69fe21d2-f013-46e6-af8c-b76ce37483b3"
 readonly BESZEL_URL="https://jiankong.845788.xyz"
-readonly EXPECTED_PORTS=(443)
+readonly EXPECTED_PORTS=(13483)
 
 WORK_DIR=""
 
