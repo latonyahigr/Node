@@ -12,7 +12,7 @@ readonly NFU_SERVICE_INFO_URL="https://config.nfdns.xyz/service-information.json
 readonly EXPECTED_NODE_COUNT=3
 readonly EXPECTED_PORTS=(13442 23412 32332)
 
-NFU_UUID="41e13fb4-f688-4652-8aef-fcfcc27f0d21"
+NFU_UUID="8c1f44e4-745c-4907-af70-71343ab4e3a7"
 
 readonly BESZEL_PORT="45876"
 readonly BESZEL_KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLBiyrA6GFrZrEXAf3UWL/puAyJUA1lJjEGwyGTVdgG"

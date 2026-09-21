@@ -16,7 +16,7 @@
           "address": "node-jp.nfdns.xyz",
           "port": 38123,
           "method": "chacha20-ietf-poly1305",
-          "password": "41e13fb4-f688-4652-8aef-fcfcc27f0d21"
+          "password": "8c1f44e4-745c-4907-af70-71343ab4e3a7"
         }
       ]
     },
@@ -30,7 +30,7 @@
           "address": "node-hk.nfdns.xyz",
           "port": 38888,
           "method": "chacha20-ietf-poly1305",
-          "password": "41e13fb4-f688-4652-8aef-fcfcc27f0d21"
+          "password": "8c1f44e4-745c-4907-af70-71343ab4e3a7"
         }
       ]
     },
@@ -44,7 +44,7 @@
           "address": "node-jp.nfdns.xyz",
           "port": 38123,
           "method": "chacha20-ietf-poly1305",
-          "password": "41e13fb4-f688-4652-8aef-fcfcc27f0d21"
+          "password": "8c1f44e4-745c-4907-af70-71343ab4e3a7"
         }
       ]
     },
@@ -58,7 +58,7 @@
           "address": "node-kr.nfdns.xyz",
           "port": 23355,
           "method": "chacha20-ietf-poly1305",
-          "password": "41e13fb4-f688-4652-8aef-fcfcc27f0d21"
+          "password": "8c1f44e4-745c-4907-af70-71343ab4e3a7"
         }
       ]
     },
@@ -72,7 +72,7 @@
           "address": "node-sg.nfdns.xyz",
           "port": 20955,
           "method": "chacha20-ietf-poly1305",
-          "password": "41e13fb4-f688-4652-8aef-fcfcc27f0d21"
+          "password": "8c1f44e4-745c-4907-af70-71343ab4e3a7"
         }
       ]
     },
@@ -86,7 +86,7 @@
           "address": "node-us.nfdns.xyz",
           "port": 38383,
           "method": "chacha20-ietf-poly1305",
-          "password": "41e13fb4-f688-4652-8aef-fcfcc27f0d21"
+          "password": "8c1f44e4-745c-4907-af70-71343ab4e3a7"
         }
       ]
     },
@@ -100,7 +100,7 @@
           "address": "node-uk.nfdns.xyz",
           "port": 25253,
           "method": "chacha20-ietf-poly1305",
-          "password": "41e13fb4-f688-4652-8aef-fcfcc27f0d21"
+          "password": "8c1f44e4-745c-4907-af70-71343ab4e3a7"
         }
       ]
     },
@@ -114,7 +114,7 @@
           "address": "node-tw.nfdns.xyz",
           "port": 20558,
           "method": "chacha20-ietf-poly1305",
-          "password": "41e13fb4-f688-4652-8aef-fcfcc27f0d21"
+          "password": "8c1f44e4-745c-4907-af70-71343ab4e3a7"
         }
       ]
     },
@@ -128,7 +128,7 @@
           "address": "node-us.nfdns.xyz",
           "port": 38383,
           "method": "chacha20-ietf-poly1305",
-          "password": "41e13fb4-f688-4652-8aef-fcfcc27f0d21"
+          "password": "8c1f44e4-745c-4907-af70-71343ab4e3a7"
         }
       ]
     },
