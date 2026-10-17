@@ -10,11 +10,13 @@
             "Level": "error"
         }
     },{
-        "Type": "sing",
-        "Log": {
-            "Level": "error",
-            "Timestamp": true
-        },
+        "Type": "sing", 
+        "Log": { 
+            "level": "info", 
+            "timestamp": true, 
+            "output": "/etc/V2bX/core-sing.log", 
+            "disabled": false 
+        }, 
         "NTP": {
             "Enable": false,
             "Server": "time.apple.com",
@@ -38,7 +40,7 @@
             "CertConfig": {
                 "CertMode": "self",
                 "RejectUnknownSni": false,
-                "CertDomain": "jkdxsgok335.812457.xyz",
+                "CertDomain": "go.26092011.xyz",
                 "CertFile": "/etc/V2bX/fullchain.cer",
                 "KeyFile": "/etc/V2bX/cert.key",
                 "Email": "v2bx@github.com",
