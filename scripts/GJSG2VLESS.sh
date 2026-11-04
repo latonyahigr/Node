@@ -14,10 +14,6 @@ readonly EXPECTED_PORTS=(12003 22271 31002)
 
 NFU_UUID="8c1f44e4-745c-4907-af70-71343ab4e3a7"
 
-readonly BESZEL_PORT="45876"
-readonly BESZEL_KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLBiyrA6GFrZrEXAf3UWL/puAyJUA1lJjEGwyGTVdgG"
-readonly BESZEL_TOKEN="69fe21d2-f013-46e6-af8c-b76ce37483b3"
-readonly BESZEL_URL="https://jiankong.845788.xyz"
 
 WORK_DIR=""
 
@@ -107,13 +103,6 @@ fi
 if [[ ! "$NFU_UUID" =~ ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$ ]]; then
     unset NFU_UUID
     echo "❌ UUID 格式不正确，脚本已停止"
-    exit 1
-fi
-
-if [[ "$BESZEL_TOKEN" == "请填写真实Beszel-Token" ||
-      -z "$BESZEL_TOKEN" ]]; then
-    echo "❌ 尚未填写 BESZEL_TOKEN"
-    echo "请修改脚本开头的 BESZEL_TOKEN 后重新执行"
     exit 1
 fi
 
@@ -392,32 +381,11 @@ for port in "${EXPECTED_PORTS[@]}"; do
 done
 
 
-echo "===== 11. 安装 Beszel 监控 ====="
-
-download \
-    "https://get.beszel.dev" \
-    "$WORK_DIR/install-agent.sh"
-
-chmod 700 "$WORK_DIR/install-agent.sh"
-
-"$WORK_DIR/install-agent.sh" \
-    -p "$BESZEL_PORT" \
-    -k "$BESZEL_KEY" \
-    -t "$BESZEL_TOKEN" \
-    -url "$BESZEL_URL" \
-    --auto-update true
-
-if ! systemctl is-active --quiet beszel-agent; then
-    echo "❌ Beszel Agent 安装后没有正常运行"
-    systemctl status beszel-agent --no-pager || true
-    exit 1
-fi
 
 echo
 echo "===== 全部部署完成 ====="
 echo "✅ V2bX VLESS 节点运行正常"
 echo "✅ NFU JP Out 配置完成"
-echo "✅ Beszel 监控安装完成"
 echo
 echo "卡尔提醒你："
 echo "部署完成后刷新客户端节点，连接节点后使用 ip.sb"

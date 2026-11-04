@@ -9,10 +9,6 @@ readonly NFU_INSTALL_URL="https://config.nfdns.xyz/nfu_sh/install.sh"
 readonly NFU_SERVICE_INFO_URL="https://config.nfdns.xyz/service-information.json"
 readonly EXPECTED_NODE_COUNT=1
 NFU_UUID="8c1f44e4-745c-4907-af70-71343ab4e3a7"
-readonly BESZEL_PORT="45876"
-readonly BESZEL_KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLBiyrA6GFrZrEXAf3UWL/puAyJUA1lJjEGwyGTVdgG"
-readonly BESZEL_TOKEN="69fe21d2-f013-46e6-af8c-b76ce37483b3"
-readonly BESZEL_URL="https://jiankong.845788.xyz"
 readonly EXPECTED_PORTS=(443)
 
 WORK_DIR=""
@@ -307,20 +303,5 @@ echo "随后更新客户端订阅并测试节点。"
 
 
 echo
-echo "===== 11. 安装 Beszel 监控 ====="
 
-curl -4fsSL https://get.beszel.dev -o /tmp/install-agent.sh &&
-chmod +x /tmp/install-agent.sh &&
-printf 'y\n' | /tmp/install-agent.sh \
--p "$BESZEL_PORT" \
--k "$BESZEL_KEY" \
--t "$BESZEL_TOKEN" \
--url "$BESZEL_URL"
-
-if ! systemctl is-active --quiet beszel-agent; then
-    echo "❌ Beszel Agent 安装后没有正常运行"
-    systemctl status beszel-agent --no-pager || true
-    exit 1
-fi
-
-echo "✅ Beszel 监控 安装完成 卡尔提醒你 部署完成后刷新客户端节点 连接节点使用ip.sb测试 IP是否一致"
+echo "卡尔提醒你 部署完成后刷新客户端节点 连接节点使用ip.sb测试 IP是否一致"
