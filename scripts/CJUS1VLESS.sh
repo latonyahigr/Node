@@ -386,7 +386,3 @@ echo
 echo "===== 全部部署完成 ====="
 echo "✅ V2bX VLESS 节点运行正常"
 echo "✅ NFU JP Out 配置完成"
-echo
-echo "卡尔提醒你："
-echo "部署完成后刷新客户端节点，连接节点后使用 ip.sb"
-echo "检查出口 IP 是否与 JP Out 一致。"
